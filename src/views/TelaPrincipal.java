@@ -8,7 +8,7 @@ import models.Usuario;
 
 /**
  *
- * @author Jonas
+ * @author Vinicius
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
