@@ -1,9 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package views;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import tools.CaixaDeDialogo;
 import models.Usuario;
 
 /**
@@ -15,8 +16,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-    public static Usuario usuarioLogado;
     
+        public static Usuario usuarioLogado;
+        
     public TelaPrincipal() {
         initComponents();
         this.setExtendedState(TelaPrincipal.MAXIMIZED_BOTH);
@@ -33,47 +35,101 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenu3 = new javax.swing.JMenu();
         lblNomeUsuario = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        mnBairros = new javax.swing.JMenuItem();
-        mnCandidatos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        mnProdutos = new javax.swing.JMenuItem();
+        mnTecnicos = new javax.swing.JMenuItem();
+        mnOs = new javax.swing.JMenuItem();
+        mnAdministrativo = new javax.swing.JMenu();
+        mnUsuarios = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        mnSobre = new javax.swing.JMenuItem();
         mnSair = new javax.swing.JMenu();
+        mnSair2 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        jMenu1.setText("jMenu1");
 
-        lblNomeUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblNomeUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNomeUsuario.setText("Bem-vindo FULANO");
+        jMenu3.setText("jMenu3");
 
-        jMenu1.setText("Cadastros");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        mnBairros.setText("Bairros");
-        mnBairros.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Menu");
+
+        jMenu4.setText("Cadastro");
+
+        jMenuItem4.setText("Cliente/Fornecedores");
+        jMenu4.add(jMenuItem4);
+
+        mnProdutos.setText("Produtos");
+        mnProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    mnBairrosActionPerformed(evt);
-                } catch (SQLException ex) {
-                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                mnProdutosActionPerformed(evt);
             }
         });
-        jMenu1.add(mnBairros);
+        jMenu4.add(mnProdutos);
 
-        mnCandidatos.setText("Candidatos");
-        mnCandidatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    mnCandidatosActionPerformed(evt);
-                } catch (SQLException ex) {
-                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        mnTecnicos.setText("Técnicos");
+        mnTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnTecnicosMouseClicked(evt);
             }
         });
-        jMenu1.add(mnCandidatos);
+        mnTecnicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTecnicosActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mnTecnicos);
 
-        jMenuBar1.add(jMenu1);
+        jMenu2.add(jMenu4);
+
+        mnOs.setText("Ordem de serviço");
+        mnOs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnOsActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnOs);
+
+        jMenuBar1.add(jMenu2);
+
+        mnAdministrativo.setText("Administrativo");
+
+        mnUsuarios.setText("Cad. Usuários");
+        mnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnUsuariosActionPerformed(evt);
+            }
+        });
+        mnAdministrativo.add(mnUsuarios);
+
+        jMenuItem8.setText("Impressoras");
+        mnAdministrativo.add(jMenuItem8);
+
+        jMenuBar1.add(mnAdministrativo);
+
+        jMenu6.setText("Suporte");
+
+        jMenuItem9.setText("Suporte Remoto");
+        jMenu6.add(jMenuItem9);
+
+        mnSobre.setText("Sobre");
+        mnSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSobreActionPerformed(evt);
+            }
+        });
+        jMenu6.add(mnSobre);
+
+        jMenuBar1.add(jMenu6);
 
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +137,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnSairActionPerformed(evt);
             }
         });
+
+        mnSair2.setText("Sair do Sistema");
+        mnSair2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSair2ActionPerformed(evt);
+            }
+        });
+        mnSair.add(mnSair2);
+
         jMenuBar1.add(mnSair);
 
         setJMenuBar(jMenuBar1);
@@ -90,36 +155,64 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(425, Short.MAX_VALUE)
-                .addComponent(lblNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(355, Short.MAX_VALUE)
+                .addComponent(lblNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNomeUsuario)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(lblNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnBairrosActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_mnBairrosActionPerformed
-        CadBairros tela_bairros = new CadBairros();
-        tela_bairros.setVisible(true);
-    }//GEN-LAST:event_mnBairrosActionPerformed
+    private void mnTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnTecnicosMouseClicked
 
-    private void mnCandidatosActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_mnCandidatosActionPerformed
-        CadCandidatos tela = new CadCandidatos();
-        tela.setVisible(true);
-    }//GEN-LAST:event_mnCandidatosActionPerformed
+    }//GEN-LAST:event_mnTecnicosMouseClicked
 
+    private void mnTecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTecnicosActionPerformed
+       CadTecnicos tela_tecnicos = new CadTecnicos();
+        tela_tecnicos.setVisible(true);
+    }//GEN-LAST:event_mnTecnicosActionPerformed
 
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
-        dispose();
     }//GEN-LAST:event_mnSairActionPerformed
 
+    private void mnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnProdutosActionPerformed
+       CadProdutos tela_produtos = new CadProdutos();
+        tela_produtos.setVisible(true);
+    }//GEN-LAST:event_mnProdutosActionPerformed
+
+    private void mnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsuariosActionPerformed
+       CadUsuarios tela_usuarios = new CadUsuarios();
+        tela_usuarios.setVisible(true);
+    }//GEN-LAST:event_mnUsuariosActionPerformed
+
+    private void mnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSobreActionPerformed
+       TelaSobre tela_sobre = new TelaSobre();
+        tela_sobre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_mnSobreActionPerformed
+
+    private void mnSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSair2ActionPerformed
+        //System.exit(0);
+     this.fechar();
+    } 
+ 
+    private void fechar(){
+        if(javax.swing.JOptionPane.showConfirmDialog(null,"Deseja Fechar?","ATENÇÂO ",javax.swing.JOptionPane.YES_NO_OPTION )==0){
+            this.dispose();
+        }
+    
+    }//GEN-LAST:event_mnSair2ActionPerformed
+
+    private void mnOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOsActionPerformed
+        CadOrdens tela_os = new CadOrdens();
+        tela_os.setVisible(true);
+    }//GEN-LAST:event_mnOsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,13 +240,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -165,10 +251,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel lblNomeUsuario;
-    private javax.swing.JMenuItem mnBairros;
-    private javax.swing.JMenuItem mnCandidatos;
+    private javax.swing.JMenu mnAdministrativo;
+    private javax.swing.JMenuItem mnOs;
+    private javax.swing.JMenuItem mnProdutos;
     private javax.swing.JMenu mnSair;
+    private javax.swing.JMenuItem mnSair2;
+    private javax.swing.JMenuItem mnSobre;
+    private javax.swing.JMenuItem mnTecnicos;
+    private javax.swing.JMenuItem mnUsuarios;
     // End of variables declaration//GEN-END:variables
 }

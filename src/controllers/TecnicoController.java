@@ -22,25 +22,23 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import models.Bairro;
-import models.Candidato;
+import models.Tecnico;
 /**
  *
  * @author Vinicius
  */
-public class BairroController {
+public class TecnicoController {
     
     
-    public boolean incluir(Bairro objeto){
+    public boolean incluir(Tecnico objeto){
         
         Conexao.abreConexao();
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("INSERT INTO bairros(nome, id_cidade) VALUES(?,?)");
+            stmt = con.prepareStatement("INSERT INTO tecnicos(nome) VALUES(?)");
             stmt.setString(1, objeto.getNome());
-            stmt.setInt(2, objeto.getId_cidade());
             
             stmt.executeUpdate();
             
@@ -57,17 +55,16 @@ public class BairroController {
        }
     }
     
-    public boolean alterar(Bairro objeto){
+    public boolean alterar(Tecnico objeto){
         
         Conexao.abreConexao();
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("UPDATE bairros SET nome=?, id_cidade=?  WHERE id=?");
+            stmt = con.prepareStatement("UPDATE tecnicos SET nome=? WHERE id=?");
             stmt.setString(1, objeto.getNome());
-            stmt.setInt(2, objeto.getId_cidade());
-            stmt.setInt(3, objeto.getId());
+            stmt.setInt(2, objeto.getId());
 
             stmt.executeUpdate();
             
@@ -85,7 +82,7 @@ public class BairroController {
         
     }
     
-    public void preencher(JTable jtbBairros) {
+    public void preencher(JTable jtbTecnicos) {
 
         Conexao.abreConexao();
         
@@ -94,19 +91,19 @@ public class BairroController {
         
         cabecalhos.add("ID");
         cabecalhos.add("Nome");
-        cabecalhos.add("ID Cidade");
         cabecalhos.add("Excluir");
              
         ResultSet result = null;
         
         try {
 
-            String SQL = "";
-            SQL = " SELECT id, nome, id_cidade";
-            SQL += " FROM bairros ";
-            SQL += " ORDER BY id ";
+            String wSql = "";
+            wSql = " SELECT id, nome";
+            wSql += " FROM tecnicos ";
+            wSql += "WHERE COALESCE(excluido,false) is false";
+            wSql += " ORDER BY id ";
             
-            result = Conexao.stmt.executeQuery(SQL);
+            result = Conexao.stmt.executeQuery(wSql);
             
             Vector<Object> linha;
             while(result.next()) {
@@ -114,7 +111,6 @@ public class BairroController {
                 
                 linha.add(result.getInt(1));
                 linha.add(result.getString(2));
-                linha.add(result.getInt(3));
                 linha.add("X");
                 
                 dadosTabela.add(linha);
@@ -125,7 +121,7 @@ public class BairroController {
             System.out.println(e);
         }
 
-        jtbBairros.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
+        jtbTecnicos.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -135,12 +131,12 @@ public class BairroController {
         });
 
         // permite seleção de apenas uma linha da tabela
-        jtbBairros.setSelectionMode(0);
+        jtbTecnicos.setSelectionMode(0);
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
-        for (int i = 0; i >= 4; i++) {
-            column = jtbBairros.getColumnModel().getColumn(i);
+        for (int i = 0; i >= 3; i++) {
+            column = jtbTecnicos.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
                     column.setPreferredWidth(30);
@@ -151,9 +147,9 @@ public class BairroController {
                 case 2:
                     column.setPreferredWidth(100);
                     break;
-                case 3:
-                    column.setPreferredWidth(150);
-                    break;
+               // case 3:
+                //    column.setPreferredWidth(150);
+                  //  break;
 //                case 4:
   //                  column.setPreferredWidth(60);
     //                break;
@@ -163,7 +159,7 @@ public class BairroController {
             }
         }
         
-        jtbBairros.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        jtbTecnicos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                     boolean isSelected, boolean hasFocus, int row, int column) 
@@ -182,16 +178,17 @@ public class BairroController {
         //return (true);
     }
     
-    public Bairro buscar(String id){
-        Bairro objBairro = new Bairro();
+    public Tecnico buscar(String id){
+        Tecnico objTecnico = new Tecnico();
         try {
             Conexao.abreConexao();
             ResultSet rs = null;
 
             String wSQL = "";
-            wSQL = " SELECT id, nome, id_cidade";
-            wSQL += " FROM bairros ";
+            wSQL = " SELECT id, nome";
+            wSQL += " FROM tecnicos ";
             wSQL += " WHERE id = '" + id + "'";
+            wSQL += "AND COALESCE(excluido,false) is false";
 
             try{
                 System.out.println("Vai Executar Conexão em buscar");
@@ -201,11 +198,9 @@ public class BairroController {
 
                 if(rs.next() == true)
                 {
-                    objBairro.setId(rs.getInt(1));
-                    objBairro.setNome(rs.getString(2));
-                    objBairro.setId_cidade(rs.getInt(3));
+                    objTecnico.setId(rs.getInt(1));
+                    objTecnico.setNome(rs.getString(2));
 
-                    
                     
             
                 }
@@ -223,18 +218,18 @@ public class BairroController {
         }
         
         System.out.println ("Executou buscar area com sucesso");
-        return objBairro;
+        return objTecnico;
     }
     
-   /* public boolean excluir(){
+    public boolean excluir(Tecnico objeto){
         
         Conexao.abreConexao();
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("???");
-            stmt.setInt(1, objCandidato.getId());
+            stmt = con.prepareStatement("UPDATE tecnicos SET excluido = true WHERE id = ?");
+            stmt.setInt(1, objeto.getId());
                         
             stmt.executeUpdate();
             
@@ -246,6 +241,5 @@ public class BairroController {
         }finally{
             Conexao.closeConnection(con, stmt);
         }
-    }*/
-    
+    }
 }

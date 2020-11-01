@@ -173,7 +173,7 @@ public class CadBairros extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
- try{
+        try{
             boolean retorno;
             retorno = validarDados();
             
