@@ -5,6 +5,9 @@
  */
 package views;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Usuario;
 
 /**
@@ -42,7 +45,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        mnCliente = new javax.swing.JMenuItem();
         mnProdutos = new javax.swing.JMenuItem();
         mnTecnicos = new javax.swing.JMenuItem();
         mnOs = new javax.swing.JMenuItem();
@@ -65,8 +68,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Cadastro");
 
-        jMenuItem4.setText("Cliente/Fornecedores");
-        jMenu4.add(jMenuItem4);
+        mnCliente.setText("Cliente/Fornecedores");
+        mnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnClienteActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mnCliente);
 
         mnProdutos.setText("Produtos");
         mnProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +222,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela_os.setVisible(true);
     }//GEN-LAST:event_mnOsActionPerformed
 
+    private void mnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnClienteActionPerformed
+            try {
+                CadClientes tela_cliente = new CadClientes();
+                tela_cliente.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_mnClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,12 +273,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel lblNomeUsuario;
     private javax.swing.JMenu mnAdministrativo;
+    private javax.swing.JMenuItem mnCliente;
     private javax.swing.JMenuItem mnOs;
     private javax.swing.JMenuItem mnProdutos;
     private javax.swing.JMenu mnSair;

@@ -3,6 +3,9 @@ package views;
 import connection.Conexao;
 import controllers.CandidatoController;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Candidato;
@@ -20,6 +23,8 @@ public class CadCandidatos extends javax.swing.JFrame {
     Candidato objCandidato;
     CandidatoController objCandidatoControle;
     Combos cbBairro;
+    
+    static DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
     
     
     public CadCandidatos() throws SQLException {
