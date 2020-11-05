@@ -42,8 +42,10 @@ public class CadUsuarios extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
         txtLogin = new javax.swing.JTextField();
+        txtSenha2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("USUARIOS");
 
         lblId.setText("ID");
 
@@ -86,6 +88,8 @@ public class CadUsuarios extends javax.swing.JFrame {
 
         txtLogin.setText("LOGIN");
 
+        txtSenha2.setText("jPasswordField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,6 +97,7 @@ public class CadUsuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId)
                     .addGroup(layout.createSequentialGroup()
@@ -124,12 +129,15 @@ public class CadUsuarios extends javax.swing.JFrame {
                 .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -141,6 +149,7 @@ public class CadUsuarios extends javax.swing.JFrame {
                 
                 objUsuario = new Usuario();
                 objUsuario.setNome(txtNome.getText());
+                objUsuario.setLogin(txtLogin.getText());
                 UsuarioController objUsuarioController = new UsuarioController();
                 
              if (lblId.getText().equals("ID")){
@@ -184,6 +193,7 @@ public class CadUsuarios extends javax.swing.JFrame {
             txtNome.setText("");
             txtLogin.setText("");
             txtSenha.setText("");
+            txtSenha2.setText("");
             
             atualizarTabela();
             
@@ -206,6 +216,10 @@ public class CadUsuarios extends javax.swing.JFrame {
  
 
     private boolean validarDados() {
+        String senha = txtSenha.getText().toString();
+        String senha2 = txtSenha2.getText().toString();
+            
+            
         if (txtNome.getText().trim().length() == 0) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um nome corretamente", 'a');
             return false;
@@ -215,6 +229,10 @@ public class CadUsuarios extends javax.swing.JFrame {
             return false;
         }
         if (txtSenha.getText().trim().length() == 0) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe uma senha corretamente", 'a');
+            return false;
+             }
+        if (senha.equals("") && !senha2.equals("")){
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe uma senha corretamente", 'a');
             return false;
              }
@@ -316,5 +334,6 @@ public class CadUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JPasswordField txtSenha2;
     // End of variables declaration//GEN-END:variables
 }

@@ -69,7 +69,7 @@ public Usuario validarLogin(String login, String senha){
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("INSERT INTO usuarios(nome, login, senha) VALUES(?,?,md5('?'))");
+            stmt = con.prepareStatement("INSERT INTO usuarios(nome, login, senha) VALUES(?,?,?)");
             stmt.setString(1, objeto.getNome());
             stmt.setString(2, objeto.getLogin());
             stmt.setString(3, objeto.getSenha());
@@ -96,7 +96,7 @@ public Usuario validarLogin(String login, String senha){
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("UPDATE usuarios SET nome=?, login= ?, senha = md5('?') WHERE id=?");
+            stmt = con.prepareStatement("UPDATE usuarios SET nome=?, login= ?, senha = MD5('?') WHERE id=?");
             stmt.setString(1, objeto.getNome());
             stmt.setString(2, objeto.getLogin());
             stmt.setString(3, objeto.getSenha());

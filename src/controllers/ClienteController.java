@@ -84,7 +84,7 @@ public class ClienteController {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("UPDATE pessoas SET nome=?, id_cidade=?, data_cad=?, endereco=?, telefone=?, email=? cpf_cnpj=?  WHERE id=?");
+            stmt = con.prepareStatement("UPDATE pessoas SET nome=?, id_cidade=?, data_cad=?, endereco=?, telefone=?, email=?, cpf_cnpj=?  WHERE id=?");
             stmt.setString(1, objeto.getNome());
             stmt.setInt(2, objeto.getId_cidade());
             Date data_cad = Date.valueOf(objeto.getData_cad());  
@@ -140,7 +140,7 @@ public class ClienteController {
             wSql = " SELECT id, nome, TO_CHAR (data_cad, 'dd/mm/yyyy') as data_formatada, email ";
             wSql += " FROM pessoas ";
             wSql += "WHERE COALESCE(excluido,false) is false";
-            wSql += " ORDER BY id ";
+            wSql += " ORDER BY nome ";
             
             result = Conexao.stmt.executeQuery(wSql);
             
@@ -181,22 +181,22 @@ public class ClienteController {
             column = jtbClientes.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
-                    column.setPreferredWidth(30);
+                    column.setPreferredWidth(15);
                     break;
                 case 1:
-                    column.setPreferredWidth(100);
+                    column.setPreferredWidth(200);
                     break;
                 case 2:
-                    column.setPreferredWidth(100);
+                    column.setPreferredWidth(80);
                     break;
                 case 3:
-                    column.setPreferredWidth(150);
+                    column.setPreferredWidth(170);
                     break;
 //                case 4:
   //                  column.setPreferredWidth(60);
     //                break;
                 case 4:
-                    column.setPreferredWidth(30);
+                    column.setPreferredWidth(15);
                     break;
             }
         }

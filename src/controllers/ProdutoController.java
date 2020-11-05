@@ -29,14 +29,6 @@ import models.Produto;
  */
 public class ProdutoController {
     
-    //Candidato objCandidato;
-    //JTable jtbCandidatos = null;
-    
-    //public CandidatoController(Candidato objCandidato, JTable jtbCandidatos) {
-      //  this.objCandidato = objCandidato;
-        //this.jtbCandidatos = jtbCandidatos;
-    //}
-    
     public boolean incluir(Produto objeto){
         
         Conexao.abreConexao();
@@ -64,15 +56,7 @@ public class ProdutoController {
         }finally{
             Conexao.closeConnection(con,stmt);
             return true;
-            
-//        }catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//            return false;
-//        }catch (Exception ex){
-//            System.out.println(ex.getMessage());
-//            return false;
-//        }finally{
-//            Conexao.closeConnection(con, stmt);
+
        }
     }
     
@@ -176,7 +160,7 @@ public class ProdutoController {
                     column.setPreferredWidth(30);
                     break;
                 case 1:
-                    column.setPreferredWidth(100);
+                    column.setPreferredWidth(150);
                     break;
                 case 2:
                     column.setPreferredWidth(100);

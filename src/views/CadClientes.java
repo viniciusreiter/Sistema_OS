@@ -61,42 +61,44 @@ public class CadClientes extends javax.swing.JFrame {
         jtbClientes = new javax.swing.JTable();
         txtLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(640, 480));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CLIENTES E FORNECEDORES");
+        setMinimumSize(new java.awt.Dimension(1024, 768));
+        setPreferredSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 48, 252, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 300, -1));
 
         jLabel1.setText("Razão Social");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 51, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         jLabel2.setText("Endereço");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 103, 59, -1));
-        getContentPane().add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 100, 252, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 59, -1));
+        getContentPane().add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 300, -1));
 
         jLabel3.setText("Cidade");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 130, 59, -1));
-        getContentPane().add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 159, 152, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 59, -1));
+        getContentPane().add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 152, -1));
 
-        jLabel4.setText("Fone");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 162, 59, -1));
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 190, 252, -1));
+        jLabel4.setText("Telefone");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 59, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 300, -1));
 
         jLabel5.setText("E-mail");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 193, 59, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 59, -1));
 
         jLabel6.setText("Documento");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 77, 68, -1));
-        getContentPane().add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 74, 150, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 68, -1));
+        getContentPane().add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 150, -1));
 
         lblId.setText("ID");
-        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 23, -1, -1));
-        getContentPane().add(txtDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 221, 150, -1));
+        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        getContentPane().add(txtDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 150, -1));
 
         jLabel8.setText("Data cadastro");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 224, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
 
         jcbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jcbCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 126, 152, -1));
+        getContentPane().add(jcbCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 250, -1));
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +106,7 @@ public class CadClientes extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 84, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 84, -1));
 
         jtbClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,7 +126,7 @@ public class CadClientes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtbClientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 440, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 670, 360));
 
         txtLimpar.setText("Novo / Limpar");
         txtLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +134,10 @@ public class CadClientes extends javax.swing.JFrame {
                 txtLimparActionPerformed(evt);
             }
         });
-        getContentPane().add(txtLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+        getContentPane().add(txtLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -249,7 +252,7 @@ public class CadClientes extends javax.swing.JFrame {
     }   
     
     private boolean validarDados(){
-        if (txtNome.getText().trim().length() == 0) {
+                if (txtNome.getText().trim().length() == 0) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um nome corretamente", 'a');
             return false;
              }
@@ -263,6 +266,19 @@ public class CadClientes extends javax.swing.JFrame {
                 return false;
             }
         }
+        if (txtDocumento.getText().trim().length() == 0) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um CPF ou CNPJ corretamente", 'a');
+            return false;
+             }
+        if (txtTelefone.getText().trim().length() == 0) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o telefone corretamente", 'a');
+            return false;
+             }
+        if (txtEndereco.getText().trim().length() == 0) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um nome corretamente", 'a');
+            return false;
+             }
+        
   
         return true;
     }

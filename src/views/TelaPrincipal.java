@@ -63,6 +63,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SISTEMA OS");
 
         jMenu2.setText("Menu");
 
@@ -191,7 +192,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnSairActionPerformed
 
     private void mnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnProdutosActionPerformed
-       CadProdutos tela_produtos = new CadProdutos();
+       CadProdutos tela_produtos = null;
+            try {
+                tela_produtos = new CadProdutos();
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         tela_produtos.setVisible(true);
     }//GEN-LAST:event_mnProdutosActionPerformed
 
