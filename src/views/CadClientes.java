@@ -46,12 +46,10 @@ public class CadClientes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtTelefone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtDocumento = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
         txtDataCad = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -60,6 +58,8 @@ public class CadClientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbClientes = new javax.swing.JTable();
         txtLimpar = new javax.swing.JButton();
+        txtTelefone = new javax.swing.JFormattedTextField();
+        txtDocumento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CLIENTES E FORNECEDORES");
@@ -68,45 +68,53 @@ public class CadClientes extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 300, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Razão Social");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Endereço");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 59, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 59, -1));
         getContentPane().add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 300, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Cidade");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 59, -1));
-        getContentPane().add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 152, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 59, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Telefone");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 59, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 59, -1));
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 300, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("E-mail");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 59, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 59, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 68, -1));
-        getContentPane().add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 150, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 80, -1));
 
+        lblId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblId.setText("ID");
-        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
         getContentPane().add(txtDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 150, -1));
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Data cadastro");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
 
         jcbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcbCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 250, -1));
 
+        btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salvar16.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 84, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 270, 90, -1));
 
         jtbClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,6 +136,8 @@ public class CadClientes extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 670, 360));
 
+        txtLimpar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/limpar-16.png"))); // NOI18N
         txtLimpar.setText("Novo / Limpar");
         txtLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +145,20 @@ public class CadClientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+
+        try {
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ##### - ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 150, -1));
+
+        try {
+            txtDocumento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 180, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -373,11 +397,11 @@ public class CadClientes extends javax.swing.JFrame {
     private javax.swing.JTable jtbClientes;
     private javax.swing.JLabel lblId;
     private javax.swing.JTextField txtDataCad;
-    private javax.swing.JTextField txtDocumento;
+    private javax.swing.JFormattedTextField txtDocumento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JButton txtLimpar;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

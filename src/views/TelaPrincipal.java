@@ -41,14 +41,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         lblNomeUsuario = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        mnMenu = new javax.swing.JMenu();
+        mnCadastros = new javax.swing.JMenu();
         mnCliente = new javax.swing.JMenuItem();
         mnProdutos = new javax.swing.JMenuItem();
         mnTecnicos = new javax.swing.JMenuItem();
+        mnCidades = new javax.swing.JMenuItem();
         mnOs = new javax.swing.JMenuItem();
+        mnRelatorios = new javax.swing.JMenu();
+        mnRelatoriosClientes = new javax.swing.JMenuItem();
+        mnRelatoriosProdutos = new javax.swing.JMenuItem();
+        mnRelatoriosOs = new javax.swing.JMenuItem();
         mnAdministrativo = new javax.swing.JMenu();
         mnUsuarios = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -62,12 +68,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("jMenu3");
 
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SISTEMA OS");
 
-        jMenu2.setText("Menu");
+        mnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
+        mnMenu.setText("Menu");
 
-        jMenu4.setText("Cadastro");
+        mnCadastros.setText("Cadastro");
 
         mnCliente.setText("Cliente/Fornecedores");
         mnCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +84,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(mnCliente);
+        mnCadastros.add(mnCliente);
 
         mnProdutos.setText("Produtos");
         mnProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +92,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnProdutosActionPerformed(evt);
             }
         });
-        jMenu4.add(mnProdutos);
+        mnCadastros.add(mnProdutos);
 
         mnTecnicos.setText("Técnicos");
         mnTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,9 +105,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnTecnicosActionPerformed(evt);
             }
         });
-        jMenu4.add(mnTecnicos);
+        mnCadastros.add(mnTecnicos);
 
-        jMenu2.add(jMenu4);
+        mnCidades.setText("Cidades");
+        mnCidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCidadesActionPerformed(evt);
+            }
+        });
+        mnCadastros.add(mnCidades);
+
+        mnMenu.add(mnCadastros);
 
         mnOs.setText("Ordem de serviço");
         mnOs.addActionListener(new java.awt.event.ActionListener() {
@@ -106,10 +123,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnOsActionPerformed(evt);
             }
         });
-        jMenu2.add(mnOs);
+        mnMenu.add(mnOs);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mnMenu);
 
+        mnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/relatorio.png"))); // NOI18N
+        mnRelatorios.setText("Relatórios");
+
+        mnRelatoriosClientes.setText("Relatórios de Clientes");
+        mnRelatorios.add(mnRelatoriosClientes);
+
+        mnRelatoriosProdutos.setText("Relatório de Produtos");
+        mnRelatorios.add(mnRelatoriosProdutos);
+
+        mnRelatoriosOs.setText("Relatorios de OS");
+        mnRelatoriosOs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatoriosOsActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelatoriosOs);
+
+        jMenuBar1.add(mnRelatorios);
+
+        mnAdministrativo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/administrativo.png"))); // NOI18N
         mnAdministrativo.setText("Administrativo");
 
         mnUsuarios.setText("Cad. Usuários");
@@ -125,6 +162,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnAdministrativo);
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/suporte.png"))); // NOI18N
         jMenu6.setText("Suporte");
 
         jMenuItem9.setText("Suporte Remoto");
@@ -140,6 +178,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
+        mnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sair.png"))); // NOI18N
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +276,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_mnClienteActionPerformed
 
+    private void mnCidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCidadesActionPerformed
+        CadCidades cad_cidade = null;
+            try {
+                cad_cidade = new CadCidades();
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        cad_cidade.setVisible(true);
+    }//GEN-LAST:event_mnCidadesActionPerformed
+
+    private void mnRelatoriosOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosOsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnRelatoriosOsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,19 +327,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel lblNomeUsuario;
     private javax.swing.JMenu mnAdministrativo;
+    private javax.swing.JMenu mnCadastros;
+    private javax.swing.JMenuItem mnCidades;
     private javax.swing.JMenuItem mnCliente;
+    private javax.swing.JMenu mnMenu;
     private javax.swing.JMenuItem mnOs;
     private javax.swing.JMenuItem mnProdutos;
+    private javax.swing.JMenu mnRelatorios;
+    private javax.swing.JMenuItem mnRelatoriosClientes;
+    private javax.swing.JMenuItem mnRelatoriosOs;
+    private javax.swing.JMenuItem mnRelatoriosProdutos;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnSair2;
     private javax.swing.JMenuItem mnSobre;
