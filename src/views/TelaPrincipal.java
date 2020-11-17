@@ -5,10 +5,19 @@
  */
 package views;
 
+import controllers.RelatorioController;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Usuario;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import tools.CaixaDeDialogo;
 
 /**
  *
@@ -19,13 +28,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-    
-        public static Usuario usuarioLogado;
-        
+    public static Usuario usuarioLogado;
+
     public TelaPrincipal() {
         initComponents();
         this.setExtendedState(TelaPrincipal.MAXIMIZED_BOTH);
-        
+
         lblNomeUsuario.setText("Bem-Vindo " + usuarioLogado.getNome());
     }
 
@@ -51,13 +59,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnTecnicos = new javax.swing.JMenuItem();
         mnCidades = new javax.swing.JMenuItem();
         mnOs = new javax.swing.JMenuItem();
+        mnAdministrativo = new javax.swing.JMenu();
+        mnUsuarios = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         mnRelatorios = new javax.swing.JMenu();
         mnRelatoriosClientes = new javax.swing.JMenuItem();
         mnRelatoriosProdutos = new javax.swing.JMenuItem();
         mnRelatoriosOs = new javax.swing.JMenuItem();
-        mnAdministrativo = new javax.swing.JMenu();
-        mnUsuarios = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         mnSobre = new javax.swing.JMenuItem();
@@ -127,25 +135,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnMenu);
 
-        mnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/relatorio.png"))); // NOI18N
-        mnRelatorios.setText("Relatórios");
-
-        mnRelatoriosClientes.setText("Relatórios de Clientes");
-        mnRelatorios.add(mnRelatoriosClientes);
-
-        mnRelatoriosProdutos.setText("Relatório de Produtos");
-        mnRelatorios.add(mnRelatoriosProdutos);
-
-        mnRelatoriosOs.setText("Relatorios de OS");
-        mnRelatoriosOs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnRelatoriosOsActionPerformed(evt);
-            }
-        });
-        mnRelatorios.add(mnRelatoriosOs);
-
-        jMenuBar1.add(mnRelatorios);
-
         mnAdministrativo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/administrativo.png"))); // NOI18N
         mnAdministrativo.setText("Administrativo");
 
@@ -161,6 +150,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnAdministrativo.add(jMenuItem8);
 
         jMenuBar1.add(mnAdministrativo);
+
+        mnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/relatorio.png"))); // NOI18N
+        mnRelatorios.setText("Relatórios");
+
+        mnRelatoriosClientes.setText("Relatórios de Clientes");
+        mnRelatoriosClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatoriosClientesActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelatoriosClientes);
+
+        mnRelatoriosProdutos.setText("Relatório de Produtos");
+        mnRelatoriosProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatoriosProdutosActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelatoriosProdutos);
+
+        mnRelatoriosOs.setText("Relatorios de OS");
+        mnRelatoriosOs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatoriosOsActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelatoriosOs);
+
+        jMenuBar1.add(mnRelatorios);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/suporte.png"))); // NOI18N
         jMenu6.setText("Suporte");
@@ -212,7 +230,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,7 +241,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnTecnicosMouseClicked
 
     private void mnTecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTecnicosActionPerformed
-       CadTecnicos tela_tecnicos = new CadTecnicos();
+        CadTecnicos tela_tecnicos = new CadTecnicos();
         tela_tecnicos.setVisible(true);
     }//GEN-LAST:event_mnTecnicosActionPerformed
 
@@ -231,35 +249,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnSairActionPerformed
 
     private void mnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnProdutosActionPerformed
-       CadProdutos tela_produtos = null;
-            try {
-                tela_produtos = new CadProdutos();
-            } catch (SQLException ex) {
-                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        CadProdutos tela_produtos = null;
+        try {
+            tela_produtos = new CadProdutos();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         tela_produtos.setVisible(true);
     }//GEN-LAST:event_mnProdutosActionPerformed
 
     private void mnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsuariosActionPerformed
-       CadUsuarios tela_usuarios = new CadUsuarios();
+        CadUsuarios tela_usuarios = new CadUsuarios();
         tela_usuarios.setVisible(true);
     }//GEN-LAST:event_mnUsuariosActionPerformed
 
     private void mnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSobreActionPerformed
-       TelaSobre tela_sobre = new TelaSobre();
+        TelaSobre tela_sobre = new TelaSobre();
         tela_sobre.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_mnSobreActionPerformed
 
     private void mnSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSair2ActionPerformed
         //System.exit(0);
-     this.fechar();
-    } 
- 
-    private void fechar(){
-        if(javax.swing.JOptionPane.showConfirmDialog(null,"Deseja Fechar?","ATENÇÂO ",javax.swing.JOptionPane.YES_NO_OPTION )==0){
+        this.fechar();
+    }
+
+    private void fechar() {
+        if (javax.swing.JOptionPane.showConfirmDialog(null, "Deseja Fechar?", "ATENÇÂO ", javax.swing.JOptionPane.YES_NO_OPTION) == 0) {
             this.dispose();
         }
-    
+
     }//GEN-LAST:event_mnSair2ActionPerformed
 
     private void mnOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOsActionPerformed
@@ -268,27 +286,63 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnOsActionPerformed
 
     private void mnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnClienteActionPerformed
-            try {
-                CadClientes tela_cliente = new CadClientes();
-                tela_cliente.setVisible(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            CadClientes tela_cliente = new CadClientes();
+            tela_cliente.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mnClienteActionPerformed
 
     private void mnCidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCidadesActionPerformed
         CadCidades cad_cidade = null;
-            try {
-                cad_cidade = new CadCidades();
-            } catch (SQLException ex) {
-                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            cad_cidade = new CadCidades();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cad_cidade.setVisible(true);
     }//GEN-LAST:event_mnCidadesActionPerformed
 
     private void mnRelatoriosOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosOsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnRelatoriosOsActionPerformed
+
+    private void mnRelatoriosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosClientesActionPerformed
+        try {
+            String wSelect = " SELECT id, nome, telefone FROM pessoas ORDER BY nome ";
+
+            RelatorioController objRelController = new RelatorioController();
+            ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
+
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioClientes.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+
+        } catch (JRException ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
+    }//GEN-LAST:event_mnRelatoriosClientesActionPerformed
+
+    private void mnRelatoriosProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosProdutosActionPerformed
+        try {
+            String wSelect = " SELECT id, nome, vl_venda, qtde FROM produtos ORDER BY nome ";
+
+            RelatorioController objRelController = new RelatorioController();
+            ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
+
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioProdutos.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+
+        } catch (JRException ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
+    }//GEN-LAST:event_mnRelatoriosProdutosActionPerformed
 
     /**
      * @param args the command line arguments
