@@ -66,6 +66,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnRelatoriosClientes = new javax.swing.JMenuItem();
         mnRelatoriosProdutos = new javax.swing.JMenuItem();
         mnRelatoriosOs = new javax.swing.JMenuItem();
+        mnRelUsuarios = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         mnSobre = new javax.swing.JMenuItem();
@@ -177,6 +178,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mnRelatorios.add(mnRelatoriosOs);
+
+        mnRelUsuarios.setText("Relatórios de Usuário");
+        mnRelUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelUsuariosActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelUsuarios);
 
         jMenuBar1.add(mnRelatorios);
 
@@ -309,21 +318,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnRelatoriosOsActionPerformed
 
     private void mnRelatoriosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosClientesActionPerformed
-        try {
-            String wSelect = " SELECT id, nome, telefone FROM pessoas ORDER BY nome ";
-
-            RelatorioController objRelController = new RelatorioController();
-            ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
-
-            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
-            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioClientes.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
-            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
-            jpViewer.setVisible(true);//abre o relatório para visualização
-            jpViewer.toFront();//define o form a frente da aplicação
-
-        } catch (JRException ex) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
-        }
+        RelatoriosClientes tela_relcliente = new RelatoriosClientes();
+        tela_relcliente.setVisible(true);
+        
+        /**/
     }//GEN-LAST:event_mnRelatoriosClientesActionPerformed
 
     private void mnRelatoriosProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosProdutosActionPerformed
@@ -343,6 +341,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
         }
     }//GEN-LAST:event_mnRelatoriosProdutosActionPerformed
+
+    private void mnRelUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelUsuariosActionPerformed
+        RelatoriosUsuarios tela_relusu = new RelatoriosUsuarios();
+        tela_relusu.setVisible(true);
+        
+    }//GEN-LAST:event_mnRelUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +400,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mnMenu;
     private javax.swing.JMenuItem mnOs;
     private javax.swing.JMenuItem mnProdutos;
+    private javax.swing.JMenuItem mnRelUsuarios;
     private javax.swing.JMenu mnRelatorios;
     private javax.swing.JMenuItem mnRelatoriosClientes;
     private javax.swing.JMenuItem mnRelatoriosOs;

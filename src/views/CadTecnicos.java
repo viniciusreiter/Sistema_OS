@@ -127,7 +127,7 @@ public class CadTecnicos extends javax.swing.JFrame {
             if(retorno) {
                 
                 objTecnico = new Tecnico();
-                objTecnico.setNome(txtNome.getText());
+                objTecnico.setNome(txtNome.getText().toUpperCase());
                 TecnicoController objTecnicoController = new TecnicoController();
                 
              if (lblId.getText().equals("ID")){

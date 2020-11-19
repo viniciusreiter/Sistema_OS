@@ -66,6 +66,12 @@ public class CadClientes extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1024, 768));
         setPreferredSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 300, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -172,12 +178,13 @@ public class CadClientes extends javax.swing.JFrame {
             if(retorno) {
                 
                 objCliente = new Cliente();
-                objCliente.setNome(txtNome.getText());
+                objCliente.setNome(txtNome.getText().toUpperCase());
                 String data = Formatacao.ajustaDataAMD(txtDataCad.getText());
                 objCliente.setData_cad(data);
                 objCliente.setEmail(txtEmail.getText());
-                objCliente.setCpf_cnpj(txtDocumento.getText());
-                objCliente.setEndereco(txtEndereco.getText());
+                String cpnjcpf = Formatacao.retornaApenasNumeros(txtDocumento.getText());
+                objCliente.setCpf_cnpj(cpnjcpf);
+                objCliente.setEndereco(txtEndereco.getText().toUpperCase());
                 String telefone = Formatacao.retornaApenasNumeros(txtTelefone.getText());
                 objCliente.setTelefone(telefone);
                 
@@ -256,6 +263,10 @@ public class CadClientes extends javax.swing.JFrame {
     private void txtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimparActionPerformed
             limparTela();
     }//GEN-LAST:event_txtLimparActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
         private void limparTela(){
         try{

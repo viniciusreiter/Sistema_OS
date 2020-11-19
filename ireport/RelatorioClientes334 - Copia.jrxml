@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioUsuarios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f681b183-9ae8-4e25-ae65-13fc6043097e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f681b183-9ae8-4e25-ae65-13fc6043097e">
 	<property name="ireport.zoom" value="1.2100000000000009"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select id, nome from usuarios order by nome]]>
+		<![CDATA[select id, nome from clientes order by nome]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -18,7 +19,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="18"/>
 				</textElement>
-				<text><![CDATA[Relatório de Usuários]]></text>
+				<text><![CDATA[Relatório de Clientes]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -36,11 +37,15 @@
 			</line>
 			<staticText>
 				<reportElement x="15" y="0" width="100" height="20" uuid="2a973f94-f213-46c4-b24f-fdde125ac10b"/>
-				<text><![CDATA[id]]></text>
+				<text><![CDATA[Id]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="154" y="1" width="100" height="20" uuid="7e66ac2e-7461-4ff8-9849-be682f64d36f"/>
-				<text><![CDATA[nome]]></text>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="1" width="100" height="20" uuid="7ba3cf46-d64d-4729-9bd6-0e08114dba41"/>
+				<text><![CDATA[Telefone]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -53,6 +58,10 @@
 			<textField>
 				<reportElement x="154" y="23" width="100" height="20" uuid="886c6787-7246-401d-8203-99b5666f025d"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="23" width="100" height="20" uuid="efcb3bbc-77dd-49d4-af36-020751e23f3c"/>
+				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -176,7 +176,7 @@ public class CadUsuarios extends javax.swing.JFrame {
             if(retorno) {
                 
                 objUsuario = new Usuario();
-                objUsuario.setNome(txtNome.getText());
+                objUsuario.setNome(txtNome.getText().toUpperCase());
                 objUsuario.setLogin(txtLogin.getText());
                 objUsuario.setSenha(txtSenha.getText());
                 UsuarioController objUsuarioController = new UsuarioController();

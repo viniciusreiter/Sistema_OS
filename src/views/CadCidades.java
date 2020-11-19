@@ -195,7 +195,7 @@ public class CadCidades extends javax.swing.JFrame {
             if(retorno) {
                 
                 objCidade = new Cidade();
-                objCidade.setNome(txtNome.getText());
+                objCidade.setNome(txtNome.getText().toUpperCase());
                 Combos objCombo = (Combos) jcbEstado.getSelectedItem();
                 String id_estado = objCombo.getCodigo();
                 objCidade.setId_estado(Integer.parseInt(id_estado));

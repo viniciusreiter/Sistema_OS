@@ -219,7 +219,7 @@ try{
             if(retorno) {
                 
                 objProduto = new Produto();
-                objProduto.setNome(txtNome.getText());
+                objProduto.setNome(txtNome.getText().toUpperCase());
                 String data = Formatacao.ajustaDataAMD(txtDataCompra.getText());
                 objProduto.setData_compra(data);
                 objProduto.setVl_compra(Float.parseFloat(txtValorCompra.getText()));
