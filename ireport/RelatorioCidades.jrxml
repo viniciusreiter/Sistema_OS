@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioClientes" language="groovy" pageWidth="750" pageHeight="950" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f681b183-9ae8-4e25-ae65-13fc6043097e">
-	<property name="ireport.zoom" value="1.9487171000000192"/>
-	<property name="ireport.x" value="112"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="4.594972986357269"/>
+	<property name="ireport.x" value="1270"/>
+	<property name="ireport.y" value="459"/>
 	<parameter name="NOME" class="java.lang.String"/>
 	<parameter name="DATA_CAD" class="java.lang.String"/>
 	<parameter name="ENDERECO" class="java.lang.String"/>
+	<parameter name="ESTADO" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT id, nome, endereco, data_cad  FROM pessoas  WHERE COALESCE(excluido,false) is false order by nome]]>
+		<![CDATA[SELECT c.id, c.nome, e.nome FROM cidades c, estados e WHERE c.id_estado = e.id ORDER BY c.nome
+]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
-	<field name="endereco" class="java.lang.String"/>
+	<field name="sigla" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -22,7 +24,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Relatório de Clientes]]></text>
+				<text><![CDATA[Relatório de Cidades]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="76" width="729" height="1" uuid="db56c916-7bc3-49a5-ad60-269c4404c4d8"/>
@@ -35,20 +37,16 @@
 				<reportElement x="0" y="39" width="729" height="1" uuid="d6172909-8c59-4ea9-b252-803aad297281"/>
 			</line>
 			<staticText>
-				<reportElement x="0" y="19" width="38" height="20" uuid="80fea0d8-5fa2-400b-837f-9f57ccaa3650"/>
-				<text><![CDATA[Nome:]]></text>
+				<reportElement x="0" y="19" width="79" height="20" uuid="80fea0d8-5fa2-400b-837f-9f57ccaa3650"/>
+				<text><![CDATA[Nome da Cidade:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="38" y="20" width="100" height="20" uuid="6aa87b80-8f2a-48ee-9613-bb6ac794c059"/>
+				<reportElement x="79" y="19" width="100" height="20" uuid="6aa87b80-8f2a-48ee-9613-bb6ac794c059"/>
 				<textFieldExpression><![CDATA[$P{NOME}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="218" y="19" width="71" height="20" uuid="82721e25-93fa-4096-bfbe-1bdc1b065193"/>
-				<text><![CDATA[Data Cadastro:]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="487" y="19" width="100" height="20" uuid="f77425d9-acc1-42ea-98d2-4b5643060114"/>
-				<textFieldExpression><![CDATA[$P{ENDERECO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{ESTADO}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="69" height="20" uuid="a7c0de66-76d6-4a90-9248-4510e71f0d49"/>
@@ -58,13 +56,9 @@
 				<text><![CDATA[Tipo de Filtro:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="437" y="19" width="50" height="20" uuid="b448aa71-0d78-4500-9b98-cf6756639ea5"/>
-				<text><![CDATA[Endereço:]]></text>
+				<reportElement x="413" y="19" width="74" height="20" uuid="b448aa71-0d78-4500-9b98-cf6756639ea5"/>
+				<text><![CDATA[Sigla do Estado]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="289" y="19" width="100" height="20" uuid="a0040170-9c79-4d51-a3de-5f0aedb232ef"/>
-				<textFieldExpression><![CDATA[$P{DATA_CAD}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -74,7 +68,7 @@
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="69" height="20" uuid="e3ca8ff1-fdef-4faa-9e11-5bd2bec659e0"/>
+				<reportElement x="11" y="0" width="55" height="20" uuid="e3ca8ff1-fdef-4faa-9e11-5bd2bec659e0"/>
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<line>
@@ -84,18 +78,18 @@
 				<reportElement x="76" y="0" width="1" height="19" uuid="00516ed7-2051-4239-a661-73c6262a85ed"/>
 			</line>
 			<line>
-				<reportElement x="312" y="0" width="1" height="19" uuid="275459bc-562b-4278-ba1c-c728db512fd6"/>
+				<reportElement x="311" y="0" width="1" height="19" uuid="275459bc-562b-4278-ba1c-c728db512fd6"/>
 			</line>
 			<staticText>
 				<reportElement x="313" y="0" width="100" height="20" uuid="c91ae8fa-f35d-42ec-bcec-732f40a9ef5b"/>
-				<text><![CDATA[ Endereço]]></text>
+				<text><![CDATA[ Estado]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="3" width="69" height="20" uuid="508dda92-b123-43de-a5c8-25d11a6bb3e2"/>
+				<reportElement x="11" y="3" width="44" height="20" uuid="508dda92-b123-43de-a5c8-25d11a6bb3e2"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -104,13 +98,13 @@
 			</textField>
 			<textField>
 				<reportElement x="313" y="3" width="347" height="20" uuid="988131a9-1900-447a-96a3-9050f2993164"/>
-				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[ $F{sigla}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="76" y="0" width="1" height="25" uuid="5fd5086a-d882-4c80-9e41-e31bfbd29f40"/>
 			</line>
 			<line>
-				<reportElement x="312" y="0" width="1" height="25" uuid="23958e93-17c1-4b4d-9247-7c282d000987"/>
+				<reportElement x="311" y="0" width="1" height="25" uuid="23958e93-17c1-4b4d-9247-7c282d000987"/>
 			</line>
 		</band>
 	</detail>

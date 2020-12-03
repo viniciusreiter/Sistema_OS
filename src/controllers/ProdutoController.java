@@ -160,7 +160,7 @@ public class ProdutoController {
                     column.setPreferredWidth(30);
                     break;
                 case 1:
-                    column.setPreferredWidth(150);
+                    column.setPreferredWidth(270);
                     break;
                 case 2:
                     column.setPreferredWidth(100);

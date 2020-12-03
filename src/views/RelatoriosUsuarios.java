@@ -88,7 +88,22 @@ public class RelatoriosUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        try{
+            try {
+            String wSelect = " SELECT id, nome FROM usuarios ORDER BY nome ";
+
+            RelatorioController objRelController = new RelatorioController();
+            ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
+
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioClientes.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+
+        } catch (JRException ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
+        /*try{
             String filtroData = "";
             
             Map<String, Object> parametros = new HashMap<String, Object>();
@@ -109,7 +124,8 @@ public class RelatoriosUsuarios extends javax.swing.JFrame {
         
         }catch(JRException ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
-        }
+        }*/
+        
     }//GEN-LAST:event_btnRelatorioActionPerformed
 
     /**

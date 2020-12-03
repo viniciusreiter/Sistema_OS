@@ -63,9 +63,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnUsuarios = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         mnRelatorios = new javax.swing.JMenu();
+        mnRelCid = new javax.swing.JMenuItem();
         mnRelatoriosClientes = new javax.swing.JMenuItem();
-        mnRelatoriosProdutos = new javax.swing.JMenuItem();
         mnRelatoriosOs = new javax.swing.JMenuItem();
+        mnRelatoriosProdutos = new javax.swing.JMenuItem();
         mnRelUsuarios = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -87,6 +88,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         mnCadastros.setText("Cadastro");
 
+        mnCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnCliente.setText("Cliente/Fornecedores");
         mnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +97,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnCadastros.add(mnCliente);
 
+        mnProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnProdutos.setText("Produtos");
         mnProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +106,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnCadastros.add(mnProdutos);
 
+        mnTecnicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnTecnicos.setText("Técnicos");
         mnTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,6 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnCadastros.add(mnTecnicos);
 
+        mnCidades.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnCidades.setText("Cidades");
         mnCidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         mnMenu.add(mnCadastros);
 
+        mnOs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnOs.setText("Ordem de serviço");
         mnOs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +161,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/relatorio.png"))); // NOI18N
         mnRelatorios.setText("Relatórios");
 
+        mnRelCid.setText("Relatórios de Cidades");
+        mnRelCid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelCidActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelCid);
+
         mnRelatoriosClientes.setText("Relatórios de Clientes");
         mnRelatoriosClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,14 +177,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnRelatorios.add(mnRelatoriosClientes);
 
-        mnRelatoriosProdutos.setText("Relatório de Produtos");
-        mnRelatoriosProdutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnRelatoriosProdutosActionPerformed(evt);
-            }
-        });
-        mnRelatorios.add(mnRelatoriosProdutos);
-
         mnRelatoriosOs.setText("Relatorios de OS");
         mnRelatoriosOs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +184,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mnRelatorios.add(mnRelatoriosOs);
+
+        mnRelatoriosProdutos.setText("Relatórios de Produtos");
+        mnRelatoriosProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatoriosProdutosActionPerformed(evt);
+            }
+        });
+        mnRelatorios.add(mnRelatoriosProdutos);
 
         mnRelUsuarios.setText("Relatórios de Usuário");
         mnRelUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +227,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        mnSair2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         mnSair2.setText("Sair do Sistema");
         mnSair2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,10 +358,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnRelatoriosProdutosActionPerformed
 
     private void mnRelUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelUsuariosActionPerformed
-        RelatoriosUsuarios tela_relusu = new RelatoriosUsuarios();
-        tela_relusu.setVisible(true);
-        
+            try {
+            String wSelect = " SELECT id, nome FROM usuarios ORDER BY nome ";
+
+            RelatorioController objRelController = new RelatorioController();
+            ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
+
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioUsuarios.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+
+        } catch (JRException ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
     }//GEN-LAST:event_mnRelUsuariosActionPerformed
+
+    private void mnRelCidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelCidActionPerformed
+   try {
+            String wSelect = " SELECT c.id, c.nome, e.sigla FROM cidades c, estados e WHERE c.id_estado = e.id ORDER BY c.nome ";
+
+            RelatorioController objRelController = new RelatorioController();
+            ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
+
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioCidades.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+
+        } catch (JRException ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
+    }//GEN-LAST:event_mnRelCidActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,6 +445,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mnMenu;
     private javax.swing.JMenuItem mnOs;
     private javax.swing.JMenuItem mnProdutos;
+    private javax.swing.JMenuItem mnRelCid;
     private javax.swing.JMenuItem mnRelUsuarios;
     private javax.swing.JMenu mnRelatorios;
     private javax.swing.JMenuItem mnRelatoriosClientes;

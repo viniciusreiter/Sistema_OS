@@ -49,9 +49,12 @@ public class RelatoriosClientes extends javax.swing.JFrame {
         btnRelatorio = new javax.swing.JButton();
         lblEndereco = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("RELÁTORIO DE CLIENTES");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nome");
 
         try {
@@ -60,8 +63,10 @@ public class RelatoriosClientes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Data");
 
+        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnRelatorio.setText("Gerar Relatório");
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,19 +74,26 @@ public class RelatoriosClientes extends javax.swing.JFrame {
             }
         });
 
+        lblEndereco.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblEndereco.setText("Endereço");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Selecione o tipo do filtro:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(310, Short.MAX_VALUE)
+                .addContainerGap(296, Short.MAX_VALUE)
                 .addComponent(btnRelatorio)
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblEndereco)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -99,7 +111,9 @@ public class RelatoriosClientes extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -111,12 +125,13 @@ public class RelatoriosClientes extends javax.swing.JFrame {
                 .addComponent(lblEndereco)
                 .addGap(18, 18, 18)
                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(btnRelatorio)
                 .addGap(39, 39, 39))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
@@ -193,6 +208,7 @@ public class RelatoriosClientes extends javax.swing.JFrame {
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtEndereco;
