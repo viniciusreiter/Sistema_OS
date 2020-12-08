@@ -48,7 +48,7 @@ public class Formatacao {
     }
     
     public static void formatarDecimal(JTextField campo) {
-        campo.setText(df.format(Double.parseDouble(campo.getText())));
+        campo.setText(df.format(Float.parseFloat(campo.getText())));
     }
 
     public static JFormattedTextField getTelefone() {
@@ -72,7 +72,7 @@ public class Formatacao {
     }
 
     public void formatoDecimal(JTextField campo) {
-        campo.setText(df.format(Double.parseDouble(campo.getText())));
+        campo.setText(df.format(Float.parseFloat(campo.getText())));
     }
     
     public static String retornaDataAtual(String formato){

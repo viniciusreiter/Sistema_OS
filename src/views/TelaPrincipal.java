@@ -283,8 +283,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnProdutosActionPerformed
 
     private void mnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsuariosActionPerformed
-        CadUsuarios tela_usuarios = new CadUsuarios();
-        tela_usuarios.setVisible(true);
+        //if (!(lblNomeUsuario.getText()== "Bem-Vindo ADMINISTRADOR")){
+            CadUsuarios tela_usuarios = new CadUsuarios();
+            tela_usuarios.setVisible(true);
+        //}else{
+          //  CaixaDeDialogo.obterinstancia().exibirMensagem("Usuario Não Autorizado ! ");
+            //System.out.println("Usuario Não Autorizado !");
+        //}
     }//GEN-LAST:event_mnUsuariosActionPerformed
 
     private void mnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSobreActionPerformed
