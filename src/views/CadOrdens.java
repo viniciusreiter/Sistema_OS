@@ -35,14 +35,14 @@ public class CadOrdens extends javax.swing.JFrame {
                 try {
 
             //preencher combo
-            cbCliente = new Combos(jcbCliente);//jcbBairro
-            cbCliente.preencheCombo("SELECT id, nome FROM pessoas ORDER BY nome");
+            cbCliente = new Combos(jcbCliente);
+            cbCliente.preencheCombo("SELECT id, nome FROM pessoas WHERE COALESCE(excluido,false) is false ORDER BY nome");
 
-            cbTecnico = new Combos(jcbTecnico); // jcbEscolas
-            cbTecnico.preencheCombo("SELECT id, nome FROM tecnicos ORDER BY nome");
+            cbTecnico = new Combos(jcbTecnico); 
+            cbTecnico.preencheCombo("SELECT id, nome FROM tecnicos WHERE COALESCE(excluido,false) is false ORDER BY nome");
             
-            cbProdutos = new Combos(jcbProdutos); // jcbEscolas
-            cbProdutos.preencheCombo("SELECT id, nome FROM produtos ORDER BY nome");
+            cbProdutos = new Combos(jcbProdutos); 
+            cbProdutos.preencheCombo("SELECT id, nome FROM produtos WHERE COALESCE(excluido,false) is false ORDER BY nome");
 
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());

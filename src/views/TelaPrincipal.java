@@ -6,6 +6,7 @@
 package views;
 
 import controllers.RelatorioController;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -154,6 +155,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnAdministrativo.add(mnUsuarios);
 
         jMenuItem8.setText("Impressoras");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         mnAdministrativo.add(jMenuItem8);
 
         jMenuBar1.add(mnAdministrativo);
@@ -207,6 +213,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu6.setText("Suporte");
 
         jMenuItem9.setText("Suporte Remoto");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem9);
 
         mnSobre.setText("Sobre");
@@ -364,7 +375,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void mnRelUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelUsuariosActionPerformed
             try {
-            String wSelect = " SELECT id, nome FROM usuarios ORDER BY nome ";
+            String wSelect = " SELECT id, nome FROM usuarios WHERE COALESCE(excluido,false) is false ORDER BY nome ";
 
             RelatorioController objRelController = new RelatorioController();
             ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
@@ -397,6 +408,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
         }
     }//GEN-LAST:event_mnRelCidActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        try {
+            Runtime.getRuntime().exec("control printers");
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+                try {
+            Runtime.getRuntime().exec("AnyDesk");
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioClientes" language="groovy" pageWidth="750" pageHeight="950" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f681b183-9ae8-4e25-ae65-13fc6043097e">
-	<property name="ireport.zoom" value="1.331000000000013"/>
-	<property name="ireport.x" value="24"/>
-	<property name="ireport.y" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioProdutos" language="groovy" pageWidth="750" pageHeight="950" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f681b183-9ae8-4e25-ae65-13fc6043097e">
+	<property name="ireport.zoom" value="1.9487171000000192"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="3"/>
 	<parameter name="NOME" class="java.lang.String"/>
 	<parameter name="DATA_CAD" class="java.lang.String"/>
-	<parameter name="ENDERECO" class="java.lang.String"/>
+	<parameter name="VALOR" class="java.lang.Float">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOMEP" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT id, nome, endereco, data_cad  FROM pessoas  WHERE COALESCE(excluido,false) is false order by nome]]>
+		<![CDATA[SELECT id,  nome,  vl_venda AS valor FROM produtos  order by p.nome]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
-	<field name="endereco" class="java.lang.String"/>
+	<field name="valor" class="java.lang.Float"/>
+	<filterExpression><![CDATA[$F{valor}]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -22,15 +29,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Relatório de Clientes]]></text>
+				<text><![CDATA[Relatório de Produtos]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="76" width="729" height="1" uuid="db56c916-7bc3-49a5-ad60-269c4404c4d8"/>
 			</line>
-			<image>
-				<reportElement x="38" y="18" width="150" height="41" uuid="ae90d6b3-b9a5-4163-9d3e-c2ccdd37b651"/>
-				<imageExpression><![CDATA["C:\\Users\\Vinicius\\Documents\\NetBeansProjects\\Sistema_OS\\src\\images\\organizar-as-ordens-de-servico-341x144.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -50,10 +53,6 @@
 				<reportElement x="218" y="19" width="71" height="20" uuid="82721e25-93fa-4096-bfbe-1bdc1b065193"/>
 				<text><![CDATA[Data Cadastro:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="487" y="19" width="100" height="20" uuid="f77425d9-acc1-42ea-98d2-4b5643060114"/>
-				<textFieldExpression><![CDATA[$P{ENDERECO}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="69" height="20" uuid="a7c0de66-76d6-4a90-9248-4510e71f0d49"/>
 				<textElement>
@@ -74,7 +73,7 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="79" y="0" width="100" height="20" uuid="3738c39f-16b9-424f-b1cd-70b8344847dd"/>
+				<reportElement x="79" y="0" width="233" height="20" uuid="3738c39f-16b9-424f-b1cd-70b8344847dd"/>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
@@ -92,7 +91,7 @@
 			</line>
 			<staticText>
 				<reportElement x="313" y="0" width="100" height="20" uuid="c91ae8fa-f35d-42ec-bcec-732f40a9ef5b"/>
-				<text><![CDATA[ Endereço]]></text>
+				<text><![CDATA[Valor]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -103,12 +102,8 @@
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="3" width="222" height="20" uuid="c51af015-2acf-41ec-aec4-6dff16789437"/>
+				<reportElement x="79" y="3" width="233" height="20" uuid="c51af015-2acf-41ec-aec4-6dff16789437"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="313" y="3" width="347" height="20" uuid="988131a9-1900-447a-96a3-9050f2993164"/>
-				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="76" y="0" width="1" height="25" uuid="5fd5086a-d882-4c80-9e41-e31bfbd29f40"/>
@@ -116,6 +111,10 @@
 			<line>
 				<reportElement x="312" y="0" width="1" height="25" uuid="23958e93-17c1-4b4d-9247-7c282d000987"/>
 			</line>
+			<textField>
+				<reportElement x="313" y="0" width="233" height="20" uuid="b04fac20-5af7-4b8e-aa1d-14718f8fff67"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

@@ -149,9 +149,9 @@ public class RelatoriosClientes extends javax.swing.JFrame {
                 parametros.put("DATA_CAD", "");
             }
             
-            String wSelect = " SELECT id, nome, endereco FROM pessoas WHERE nome like '%" + 
-                    txtNome.getText().toString() +"%' " +
-                    filtroData + "AND endereco like '%" + txtEndereco.getText().toString() +"%' " + "" +
+            String wSelect = " SELECT id, nome, endereco FROM pessoas WHERE COALESCE(excluido,false) is false AND nome like '%" + 
+                    txtNome.getText().toString().toUpperCase() +"%' " +
+                    filtroData + "AND endereco like '%" + txtEndereco.getText().toString().toUpperCase() +"%' " + "" +
                     " ORDER BY nome ";
             
             RelatorioController objRelController = new RelatorioController();

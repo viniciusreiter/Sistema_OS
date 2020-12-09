@@ -16,10 +16,14 @@
 			<staticText>
 				<reportElement x="0" y="25" width="555" height="34" uuid="f7f28097-ffa9-459c-b6af-5e18e3a83694"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="18"/>
+					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Relatório de Usuários]]></text>
 			</staticText>
+			<image>
+				<reportElement x="41" y="25" width="150" height="41" uuid="86739b9a-62b8-41fa-ac17-39d09c464aae"/>
+				<imageExpression><![CDATA["C:\\Users\\Vinicius\\Documents\\NetBeansProjects\\Sistema_OS\\src\\images\\organizar-as-ordens-de-servico-341x144.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

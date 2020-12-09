@@ -24,12 +24,12 @@ import tools.Validacao;
  *
  * @author Vinicius
  */
-public class RelatoriosProdutos extends javax.swing.JFrame {
+public class RelatoriosOrdens extends javax.swing.JFrame {
 
     /**
      * Creates new form RelatoriosCandidatos
      */
-    public RelatoriosProdutos() {
+    public RelatoriosOrdens() {
         initComponents();
     }
 
@@ -48,10 +48,13 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JButton();
         lblEndereco = new javax.swing.JLabel();
-        txtValor = new javax.swing.JFormattedTextField();
+        txtDescricao = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("RELÁTORIO DE CLIENTES");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nome");
 
         try {
@@ -60,8 +63,10 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Data");
 
+        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnRelatorio.setText("Gerar Relatório");
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,38 +74,46 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
             }
         });
 
-        lblEndereco.setText("Endereço");
+        lblEndereco.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEndereco.setText("Descrição");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Selecione o tipo do filtro:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(310, Short.MAX_VALUE)
+                .addContainerGap(296, Short.MAX_VALUE)
                 .addComponent(btnRelatorio)
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEndereco)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtDescricao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(57, 57, 57))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEndereco)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(57, 57, 57))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -111,13 +124,14 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lblEndereco)
                 .addGap(18, 18, 18)
-                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(btnRelatorio)
                 .addGap(39, 39, 39))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
@@ -126,7 +140,7 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
             
             Map<String, Object> parametros = new HashMap<String, Object>();
             parametros.put("NOME", txtNome.getText().toString().toUpperCase());
-            //parametros.put("valor",txtValor.getValue());
+            parametros.put("DESCRICAO",txtDescricao.getText().toString().toUpperCase());
             if(txtData.getValue() != null &&  Validacao.validarData(txtData.getValue().toString())){
                 parametros.put("DATA_CAD", txtData.getValue().toString());
                 String data = Formatacao.ajustaDataAMD(txtData.getValue().toString());
@@ -134,15 +148,18 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
             }else{
                 parametros.put("DATA_CAD", "");
             }
-            String wSelect = " SELECT id,  nome,  vl_venda, qtde FROM produtos  WHERE nome like '%" + 
-                    txtNome.getText().toString().toUpperCase() +"%' " +
-                    " ORDER BY nome ";
+            
+            String wSelect = " SELECT o.id, p.nome, TO_CHAR (o.data, 'dd/mm/yyyy') as data_formatada, o.valor, o.descricao "
+                    + "FROM ordens o INNER JOIN pessoas p ON (o.id_pessoa = p.id) WHERE COALESCE(o.excluido,false) is false "
+                    + "AND p.nome like '%" + txtNome.getText().toString().toUpperCase() +"%' " +
+                    filtroData + "AND o.descricao like '%" + txtDescricao.getText().toString().toUpperCase() +"%' " + "" +
+                    " ORDER BY p.nome ";
             
             RelatorioController objRelController = new RelatorioController();
             ResultSet resultSet = objRelController.buscarRelatorio(wSelect);//Buscar os dados do relatório
             
             JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
-            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioProdutos.jasper", parametros, relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioOrdens.jasper", parametros, relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
             JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
             jpViewer.setVisible(true);//abre o relatório para visualização
             jpViewer.toFront();//define o form a frente da aplicação
@@ -169,13 +186,13 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosOrdens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosOrdens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosOrdens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosOrdens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -185,7 +202,7 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RelatoriosProdutos().setVisible(true);
+                new RelatoriosOrdens().setVisible(true);
             }
         });
     }
@@ -194,9 +211,10 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JFormattedTextField txtData;
+    private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
