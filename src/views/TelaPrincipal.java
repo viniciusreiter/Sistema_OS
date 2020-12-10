@@ -345,7 +345,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnCidadesActionPerformed
 
     private void mnRelatoriosOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosOsActionPerformed
-        // TODO add your handling code here:
+        RelatoriosOrdens tela_relos = new RelatoriosOrdens();
+        tela_relos.setVisible(true);
     }//GEN-LAST:event_mnRelatoriosOsActionPerformed
 
     private void mnRelatoriosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatoriosClientesActionPerformed

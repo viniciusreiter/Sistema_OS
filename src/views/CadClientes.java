@@ -51,7 +51,6 @@ public class CadClientes extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
-        txtDataCad = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jcbCidade = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
@@ -60,6 +59,7 @@ public class CadClientes extends javax.swing.JFrame {
         txtLimpar = new javax.swing.JButton();
         txtTelefone = new javax.swing.JFormattedTextField();
         txtDocumento = new javax.swing.JFormattedTextField();
+        txtDataCad = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CLIENTES E FORNECEDORES");
@@ -103,7 +103,6 @@ public class CadClientes extends javax.swing.JFrame {
         lblId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblId.setText("ID");
         getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
-        getContentPane().add(txtDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 150, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Data cadastro");
@@ -165,6 +164,18 @@ public class CadClientes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 180, -1));
+
+        try {
+            txtDataCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDataCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataCadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 90, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -268,6 +279,10 @@ public class CadClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
+    private void txtDataCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataCadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataCadActionPerformed
+
         private void limparTela(){
         try{
             jcbCidade.setSelectedItem(null);
@@ -310,7 +325,7 @@ public class CadClientes extends javax.swing.JFrame {
             return false;
              }
         if (txtEndereco.getText().trim().length() == 0) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um nome corretamente", 'a');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um endereço corretamente", 'a');
             return false;
              }
         
@@ -407,7 +422,7 @@ public class CadClientes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbCidade;
     private javax.swing.JTable jtbClientes;
     private javax.swing.JLabel lblId;
-    private javax.swing.JTextField txtDataCad;
+    private javax.swing.JFormattedTextField txtDataCad;
     private javax.swing.JFormattedTextField txtDocumento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;

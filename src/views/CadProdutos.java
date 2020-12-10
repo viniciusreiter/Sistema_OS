@@ -12,6 +12,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 import models.Produto;
 import tools.CaixaDeDialogo;
 import tools.Combos;
@@ -29,6 +30,10 @@ public class CadProdutos extends javax.swing.JFrame {
     Combos cbFornecedor;
     
     static DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+    
+       public static void formatarDecimal(JTextField campo) {
+        campo.setText(df.format(Float.parseFloat(campo.getText())));
+    }
     
     public CadProdutos() throws SQLException {
         initComponents();
@@ -55,12 +60,12 @@ public class CadProdutos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbProdutos = new javax.swing.JTable();
-        txtDataCompra = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
-        txtValorCompra = new javax.swing.JFormattedTextField();
         txtValorVenda = new javax.swing.JFormattedTextField();
+        txtDataCompra = new javax.swing.JFormattedTextField();
+        txtValorCompra = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PRODUTOS");
@@ -126,14 +131,19 @@ public class CadProdutos extends javax.swing.JFrame {
             }
         });
 
-        txtValorCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-
         txtValorVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        txtValorVenda.setText("##/##/####");
         txtValorVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorVendaActionPerformed(evt);
             }
         });
+
+        try {
+            txtDataCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,19 +165,19 @@ public class CadProdutos extends javax.swing.JFrame {
                                 .addGap(24, 24, 24)
                                 .addComponent(btnLimpar))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(jLabel1))
-                            .addComponent(txtValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(txtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(91, 91, 91)
+                            .addComponent(txtValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                            .addComponent(txtValorCompra))
+                        .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEstoque)
-                            .addComponent(jLabel6)
+                            .addComponent(txtEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(txtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6)
+                            .addComponent(txtDataCompra)))
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
@@ -191,16 +201,16 @@ public class CadProdutos extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(28, 28, 28)))
+                                .addGap(12, 12, 12)
+                                .addComponent(txtValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(txtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtEstoque, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -228,6 +238,8 @@ try{
                 String data = Formatacao.ajustaDataAMD(txtDataCompra.getText());
                 objProduto.setData_compra(data);
                 objProduto.setVl_compra(Float.parseFloat(txtValorCompra.getText()));
+                String vlcompra = Formatacao.retornaApenasNumeros(String.valueOf(txtValorCompra.getText()));
+                objProduto.setVl_compra(Float.parseFloat((vlcompra)));
                 objProduto.setVl_venda(Float.parseFloat(txtValorVenda.getText()));
                 objProduto.setQtde(Float.parseFloat(txtEstoque.getText()));
                 //String telefone = Formatacao.retornaApenasNumeros(txtTelefone.getText());
@@ -439,7 +451,7 @@ try{
     private javax.swing.JComboBox<String> jcbFornecedor;
     private javax.swing.JTable jtbProdutos;
     private javax.swing.JLabel lblId;
-    private javax.swing.JTextField txtDataCompra;
+    private javax.swing.JFormattedTextField txtDataCompra;
     private javax.swing.JTextField txtEstoque;
     private javax.swing.JTextField txtNome;
     private javax.swing.JFormattedTextField txtValorCompra;

@@ -350,7 +350,27 @@ public class CadOrdens extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProdutoActionPerformed
-        try{
+//        try{
+//
+//            ProdutoOrdem objeto = new ProdutoOrdem();
+//            
+//            int linhaSelecionada = jtbOrdem.getSelectedRow();
+//
+//            // Primeira coluna da linha
+//            String codigo = jtbOrdem.getModel().getValueAt(linhaSelecionada, -1).toString();
+//
+//            //objeto.setId_ordem(Integer.parseInt(lblId.getText()));
+//            objeto.setId_ordem(Integer.parseInt(lblId.getText()));
+//
+//            Combos objCombo = (Combos) jcbProdutos.getSelectedItem();
+//            String id_produto= objCombo.getCodigo();
+//            objeto.setId_produto(Integer.parseInt(id_produto));
+//
+//            ProdutoOrdemController objProdutoOrdemController = new ProdutoOrdemController();
+//            objProdutoOrdemController.incluir(objeto);
+//
+//            atualizarTabelaProdutos(Integer.parseInt(lblId.getText()));
+try{
 
             ProdutoOrdem objeto = new ProdutoOrdem();
 
@@ -398,6 +418,7 @@ public class CadOrdens extends javax.swing.JFrame {
             }
         }
         private void limparTela() {
+           int id_ordem = 0;
             try {
                 lblId.setText("ID");
                 txtDescricao.setText("");
@@ -408,6 +429,7 @@ public class CadOrdens extends javax.swing.JFrame {
                 jcbProdutos.setSelectedIndex(0);
 
                 atualizarTabela();
+                atualizarTabelaProdutos(id_ordem);
 
             } catch (Exception ex) {
                 CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
@@ -484,8 +506,17 @@ public class CadOrdens extends javax.swing.JFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
 
-        jTabbedPane1.setSelectedIndex(2);
+        
         jcbProdutos.setSelectedIndex(0);
+        int linhaSelecionada = jtbOrdem.getSelectedRow();
+        String codigo = jtbOrdem.getModel().getValueAt(linhaSelecionada, 0).toString();
+        OrdemController ordController = new OrdemController();
+        Ordem objeto = ordController.buscar(codigo);
+        if (objeto != null) {
+        preencherCampos(objeto);}
+        jTabbedPane1.setSelectedIndex(2);
+        
+        
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jtbOrdemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbOrdemMousePressed
@@ -581,9 +612,41 @@ public class CadOrdens extends javax.swing.JFrame {
                 if(retorno == false){
                     CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar/incluir", "Erro", 'e');
                 }else{
-                    CaixaDeDialogo.obterinstancia().exibirMensagem("Registro alterado/incluído com sucesso", "Sucesso", 'i');
-                    jTabbedPane1.setSelectedIndex(2);
-                    jcbProdutos.setSelectedIndex(0);
+                   CaixaDeDialogo.obterinstancia().exibirMensagem("Registro alterado/incluído com sucesso", "Sucesso", 'i');
+//                    jTabbedPane1.setSelectedIndex(2);
+//                    jcbProdutos.setSelectedIndex(0);
+                   // preencherCampos(objOrdem);
+                    
+//            ProdutoOrdem objeto = new ProdutoOrdem();
+//            
+//            int linhaSelecionada = jtbOrdem.getSelectedRow();
+//
+//            // Primeira coluna da linha
+//            String codigop = jtbOrdem.getModel().getValueAt(linhaSelecionada, -1).toString();
+//
+//            //objeto.setId_ordem(Integer.parseInt(lblId.getText()));
+//            objeto.setId_ordem(Integer.parseInt(codigop));
+//
+//            //Combos objCombo = (Combos) jcbProdutos.getSelectedItem();
+//            //String id_produto= objCombo.getCodigo();
+//            //objeto.setId_produto(Integer.parseInt(id_produto));
+//
+//            ProdutoOrdemController objProdutoOrdemController = new ProdutoOrdemController();
+//            objProdutoOrdemController.incluir(objeto);
+//
+//            atualizarTabelaProdutos(Integer.parseInt(codigop));
+
+            //objeto.setId_ordem(Integer.parseInt(lblId.get
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     //limparTela();
                 }
 

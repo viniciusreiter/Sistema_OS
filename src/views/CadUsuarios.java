@@ -261,7 +261,6 @@ public class CadUsuarios extends javax.swing.JFrame {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe uma senha corretamente", 'a');
             return false;
              }
-        //if (!senha.equals("") == !senha2.equals("")){
             if (!senha.equals(senha2)){
             CaixaDeDialogo.obterinstancia().exibirMensagem("Senhas não conferem", 'a');
             return false;
